@@ -1,0 +1,8 @@
+.Sidenav {
+  .Sidenav--menu-text {
+    color: grey;
+  }
+  .active .Sidenav--menu-text {
+    color: inherit;
+  }
+}

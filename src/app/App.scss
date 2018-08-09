@@ -1,0 +1,15 @@
+.App {
+  width: 100%;
+  min-width: 1300px;
+  background: #f6f8fa;
+  /**
+  * Semantic UI Menu
+  */
+  .menu-item {
+    min-width: initial !important;
+  }
+  .App--outlet {
+    /* Width of Sidenav */
+    margin-left: 100px;
+  }
+}

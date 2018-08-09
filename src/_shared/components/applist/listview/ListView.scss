@@ -1,0 +1,57 @@
+.ListView--app-details {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 24px;
+  padding: 0 !important;
+  &:hover {
+    background: rgba(#000, 0.05);
+  }
+  &.dummy {
+    * {
+      font-family: "BLOKK" !important;
+      color: #aaa !important;
+    }
+  }
+  .ListView--app-details--icon-container {
+    // width: 120px !important;
+    text-align: center;
+    .ListView--app-details--icon-container--icon {
+      margin-left: 24px;
+      width: 60%; // height: 88px;
+      // margin-right: 24px;
+      user-select: none;
+      vertical-align: top;
+    }
+  }
+  .ListView--app-details--content {
+    padding-top: 8px;
+    .ListView--app-details--content--app-name {
+      font-size: 16px !important;
+      text-transform: capitalize;
+    }
+    .ListView--app-details--content--description {
+      font-size: 14px;
+      display: inline-block;
+      .ListView--app-details--content--no-description {
+        font-size: 12px;
+        opacity: 0.5;
+      }
+    }
+    .ListView--app-details--content--keyword {
+      margin-top: 24px;
+      margin-right: 12px;
+      border-radius: 1000px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+  .ListView--app-details--content--download-button {
+    flex-grow: 0;
+    max-width: 150px;
+    right: 0px;
+    .icon {
+      position: absolute;
+      right: 12px;
+    }
+  }
+}

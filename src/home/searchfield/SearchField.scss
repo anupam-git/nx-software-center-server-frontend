@@ -1,0 +1,17 @@
+.SearchField {
+  margin-top: 128px;
+  margin-bottom: 128px;
+  /**
+   * Force remove unwanted border
+  **/
+  .dropdown {
+    border: none;
+  }
+  .SearchField--Input--dropdown {
+    width: 170px;
+  }
+  .SearchField--Input--search-button {
+    top: 50% !important;
+    transform: translateY(-50%);
+  }
+}
