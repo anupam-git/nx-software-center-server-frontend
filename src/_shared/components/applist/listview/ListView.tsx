@@ -1,6 +1,6 @@
 import * as React from "react";
 import ReactImageFallback from "react-image-fallback";
-import { Grid, Label, List, Popup } from "semantic-ui-react";
+import { Grid, Icon, Label, List, Pagination, PaginationProps, Popup } from "semantic-ui-react";
 
 import { IApp } from "../../../interfaces/IApp";
 
@@ -11,17 +11,31 @@ interface IListViewPropTypes {
   apps: IApp[];
 }
 
-export default class ListView extends React.Component<IListViewPropTypes, any> {
+interface IListViewState {
+  page: number;
+  appsPerPage: number;
+}
+
+export default class ListView extends React.Component<IListViewPropTypes, IListViewState> {
   constructor(props: IListViewPropTypes) {
     super(props);
+
+    /* Bind attached handlers to `this` */
+    this.handlePageChange = this.handlePageChange.bind(this);
+    /* */
+
+    this.state = {
+      page: 0,
+      appsPerPage: 10
+    };
   }
 
   public render() {
+    console.log(this.props.apps.length, this.state);
     return (
-      // <Visibility onUpdate={this.handleVisibilityUpdate} data-appcount={this.props.apps.length}>
       <List>
         {
-          this.props.apps.map((app, index: number) => {
+          this.props.apps.slice(this.state.page * this.state.appsPerPage, this.state.page * this.state.appsPerPage + this.state.appsPerPage).map((app, index: number) => {
             return (
               <List.Item key={"ListView--col-" + index} className={"ListView--app-details " + (app.isDummy ? "dummy" : "")}>
                 <Grid>
@@ -103,13 +117,30 @@ export default class ListView extends React.Component<IListViewPropTypes, any> {
             );
           })
         }
+        {
+          Math.ceil(this.props.apps.length / this.state.appsPerPage) > 1
+            ? <List.Item>
+              <Pagination
+                defaultActivePage={this.state.page + 1}
+                ellipsisItem={{ content: <Icon name="ellipsis horizontal" />, icon: true }}
+                firstItem={{ content: <Icon name="angle double left" />, icon: true }}
+                lastItem={{ content: <Icon name="angle double right" />, icon: true }}
+                prevItem={{ content: <Icon name="angle left" />, icon: true }}
+                nextItem={{ content: <Icon name="angle right" />, icon: true }}
+                totalPages={Math.ceil(this.props.apps.length / this.state.appsPerPage)}
+                onPageChange={this.handlePageChange}
+              />
+            </List.Item>
+            : null
+        }
       </List>
-      // </Visibility>
     );
   }
 
-  // private handleVisibilityUpdate(event: any, data: VisibilityEventData) {
-  //   const appcount = this["data-appcount"];
-  //   console.log(appcount, data.calculations);
-  // }
+  private handlePageChange(event: React.MouseEvent<HTMLAnchorElement>, data: PaginationProps) {
+    this.setState({
+      ...this.state,
+      page: data.activePage as number - 1
+    });
+  }
 }
