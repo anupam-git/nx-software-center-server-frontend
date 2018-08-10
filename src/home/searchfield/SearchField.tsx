@@ -22,6 +22,8 @@ interface ISearchFieldState {
 }
 
 export default class SearchField extends React.Component<ISearchFieldPropTypes, ISearchFieldState> {
+  private readonly searchChangeTimeout = 500;
+
   private options = [
     { key: "SearchField--dropdown--all", text: "All", value: "" },
     { key: "SearchField--dropdown--audiovideo", text: "Audio/Video", value: "audiovideo" },
@@ -38,6 +40,7 @@ export default class SearchField extends React.Component<ISearchFieldPropTypes, 
     { key: "SearchField--dropdown--system", text: "System", value: "system" },
     { key: "SearchField--dropdown--utility", text: "Utility", value: "utility" },
   ];
+  private searchStateUpdateTimer: NodeJS.Timer;
 
   constructor(props: ISearchFieldPropTypes) {
     super(props);
@@ -104,7 +107,13 @@ export default class SearchField extends React.Component<ISearchFieldPropTypes, 
       ...this.state,
       search
     });
+
     this.props.updateSearch(search);
+
+    clearTimeout(this.searchStateUpdateTimer);
+    this.searchStateUpdateTimer = setTimeout(() => {
+      this.props.fetchAppsList(this.state.search);
+    }, this.searchChangeTimeout);
   }
 
   private handleSearchCategoryChange(event: React.SyntheticEvent<HTMLInputElement>, data: DropdownProps) {
@@ -117,7 +126,13 @@ export default class SearchField extends React.Component<ISearchFieldPropTypes, 
       ...this.state,
       search
     });
+
     this.props.updateSearch(search);
+
+    clearTimeout(this.searchStateUpdateTimer);
+    this.searchStateUpdateTimer = setTimeout(() => {
+      this.props.fetchAppsList(this.state.search);
+    }, this.searchChangeTimeout);
   }
 
   private handleInputKeydown(event: React.KeyboardEvent<HTMLInputElement>) {
