@@ -2,10 +2,10 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import AppList from "../_shared/components/applist/AppList";
-import { IActionPayload } from "../_shared/interfaces/IActionPayload";
-import { IApp } from "../_shared/interfaces/IApp";
-import IRootState from "../_shared/interfaces/IRootState";
+import AppList from "../../_shared/components/applist/AppList";
+import { IActionPayload } from "../../_shared/interfaces/IActionPayload";
+import { IApp } from "../../_shared/interfaces/IApp";
+import IRootState from "../../_shared/interfaces/IRootState";
 import * as Actions from "./HomeAction";
 import IHomeComponentState from "./IHomeComponentState";
 import SearchField from "./searchfield/SearchField";
@@ -42,13 +42,16 @@ class HomeComponent extends React.Component<IHomeComponentPropTypes, any> {
       name: "grid layout"
     };
 
+    const showOtherList = this.props.search.text.length === 0 && this.props.search.category === "";
+
     return (
       <div className="Home">
         <div className="Home--search-container">
           <SearchField fetchAppsList={this.props.fetchAppsList} updateSearch={this.props.updateSearch} />
         </div>
-        <AppList apps={this.props.apps.slice(0, 5)} listName="Featured" icon={featuredIcon} className="Applist--featured" />
-        <AppList apps={this.props.apps.slice(5, 10)} listName="Popular" icon={popularIcon} className="Applist--popular" />
+
+        <AppList apps={this.props.apps.slice(0, 5)} visible={showOtherList} listName="Featured" icon={featuredIcon} className="Applist--featured" />
+        <AppList apps={this.props.apps.slice(5, 10)} visible={showOtherList} listName="Popular" icon={popularIcon} className="Applist--popular" />
         <AppList apps={this.props.apps} listName="All" icon={allIcon} className="Applist--all" />
       </div>
     );
@@ -56,9 +59,7 @@ class HomeComponent extends React.Component<IHomeComponentPropTypes, any> {
 }
 
 function mapStateToProps(state: IRootState, ownProps: any) {
-  return {
-    apps: state.Home.apps
-  };
+  return state.Home;
 }
 function mapDispatchToProps(dispatch: Dispatch<IActionPayload> | any, ownProps: any) {
   dispatch(Actions.fetchAppsList());

@@ -1,8 +1,8 @@
 import { Dispatch } from "react-redux";
-import * as ActionTypes from "../_shared/ActionTypes";
-import { IActionPayload } from "../_shared/interfaces/IActionPayload";
-import { IApp } from "../_shared/interfaces/IApp";
-import { IThunkActionType } from "../_shared/interfaces/IThunkActionType";
+import * as ActionTypes from "../../_shared/ActionTypes";
+import { IActionPayload } from "../../_shared/interfaces/IActionPayload";
+import { IApp } from "../../_shared/interfaces/IApp";
+import { IThunkActionType } from "../../_shared/interfaces/IThunkActionType";
 
 function updateAppsList(apps: IApp[]): IActionPayload {
   return {

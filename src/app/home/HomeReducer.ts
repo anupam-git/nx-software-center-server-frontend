@@ -1,5 +1,5 @@
-import * as ActionTypes from "../_shared/ActionTypes";
-import { IActionPayload } from "../_shared/interfaces/IActionPayload";
+import * as ActionTypes from "../../_shared/ActionTypes";
+import { IActionPayload } from "../../_shared/interfaces/IActionPayload";
 import IHomeComponentState from "./IHomeComponentState";
 
 const defaultState: IHomeComponentState = {

@@ -5,7 +5,7 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunk from "redux-thunk";
 
 import App from "./app/App";
-import homeReducer from "./home/HomeReducer";
+import homeReducer from "./app/home/HomeReducer";
 import registerServiceWorker from "./registerServiceWorker";
 
 import "./index.scss";

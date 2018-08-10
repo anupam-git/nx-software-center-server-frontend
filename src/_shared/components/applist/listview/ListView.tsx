@@ -31,7 +31,6 @@ export default class ListView extends React.Component<IListViewPropTypes, IListV
   }
 
   public render() {
-    console.log(this.props.apps.length, this.state);
     return (
       <List>
         {
@@ -118,8 +117,8 @@ export default class ListView extends React.Component<IListViewPropTypes, IListV
           })
         }
         {
-          Math.ceil(this.props.apps.length / this.state.appsPerPage) > 1
-            ? <List.Item>
+          Math.ceil(this.props.apps.length / this.state.appsPerPage) > 1 ?
+            <List.Item className="center">
               <Pagination
                 defaultActivePage={this.state.page + 1}
                 ellipsisItem={{ content: <Icon name="ellipsis horizontal" />, icon: true }}
