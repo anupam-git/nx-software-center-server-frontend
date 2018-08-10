@@ -56,7 +56,9 @@ class HomeComponent extends React.Component<IHomeComponentPropTypes, any> {
 }
 
 function mapStateToProps(state: IRootState, ownProps: any) {
-  return state.Home;
+  return {
+    apps: state.Home.apps
+  };
 }
 function mapDispatchToProps(dispatch: Dispatch<IActionPayload> | any, ownProps: any) {
   dispatch(Actions.fetchAppsList());

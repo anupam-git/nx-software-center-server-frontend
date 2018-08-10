@@ -104,6 +104,7 @@ export default class SearchField extends React.Component<ISearchFieldPropTypes, 
       ...this.state,
       search
     });
+    this.props.updateSearch(search);
   }
 
   private handleSearchCategoryChange(event: React.SyntheticEvent<HTMLInputElement>, data: DropdownProps) {
@@ -116,11 +117,11 @@ export default class SearchField extends React.Component<ISearchFieldPropTypes, 
       ...this.state,
       search
     });
+    this.props.updateSearch(search);
   }
 
   private handleInputKeydown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
-      this.props.updateSearch(this.state.search);
       this.props.fetchAppsList(this.state.search);
     }
   }
