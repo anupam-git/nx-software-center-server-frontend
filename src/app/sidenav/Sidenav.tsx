@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Icon, Menu, MenuItemProps } from "semantic-ui-react";
 
+import { Link } from "react-router-dom";
+import { routePaths } from "../routes";
 import "./Sidenav.scss";
 
 interface ISidenavPropTypes extends React.Props<Sidenav> { }
@@ -10,7 +12,8 @@ interface ISidenavState extends React.Props<Sidenav> {
     key: string,
     icon: string,
     text: string,
-    active?: boolean
+    href: string,
+    active?: boolean,
   }>;
 }
 
@@ -25,9 +28,9 @@ export default class Sidenav extends React.Component<ISidenavPropTypes, ISidenav
 
     this.state = {
       menuOptions: [
-        { key: "home", icon: "home", text: "Home", active: true },
-        { key: "categories", icon: "grid layout", text: "Categories" },
-        { key: "About", icon: "info circle", text: "About" }
+        { key: "home", icon: "home", text: "Home", active: true, href: routePaths.Home },
+        { key: "categories", icon: "grid layout", text: "Categories", href: routePaths.Categories },
+        { key: "About", icon: "info circle", text: "About", href: "/about" }
       ]
     };
   }
@@ -45,7 +48,16 @@ export default class Sidenav extends React.Component<ISidenavPropTypes, ISidenav
         {
           this.state.menuOptions.map((menu) => {
             return (
-              <Menu.Item key={"Sidenav--" + menu.key} data-menu-key={menu.key} active={menu.active} color={menu.active ? "teal" : "grey"} onClick={this.onMenuItemClick}>
+              <Menu.Item
+                as={Link}
+                key={"Sidenav--" + menu.key}
+                data-menu-key={menu.key}
+                active={menu.active}
+                color={menu.active ? "teal" : "grey"}
+                onClick={this.onMenuItemClick}
+                name={menu.href}
+                to={menu.href}
+              >
                 <Icon name={menu.icon as any} color={menu.active ? "teal" : "grey"} />
                 <div className="Sidenav--menu-text">{menu.text}</div>
               </Menu.Item>

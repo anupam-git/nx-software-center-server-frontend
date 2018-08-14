@@ -9,6 +9,7 @@ import "./ListView.scss";
 
 interface IListViewPropTypes {
   apps: IApp[];
+  appsPerPage?: number;
 }
 
 interface IListViewState {
@@ -17,6 +18,10 @@ interface IListViewState {
 }
 
 export default class ListView extends React.Component<IListViewPropTypes, IListViewState> {
+  public static defaultProps: Partial<IListViewPropTypes> = {
+    appsPerPage: 5
+  };
+
   constructor(props: IListViewPropTypes) {
     super(props);
 
@@ -26,7 +31,7 @@ export default class ListView extends React.Component<IListViewPropTypes, IListV
 
     this.state = {
       page: 0,
-      appsPerPage: 10
+      appsPerPage: this.props.appsPerPage as number
     };
   }
 

@@ -1,6 +1,4 @@
 export function FileDownloader(url: string) {
-  console.log("Downloading :", url);
-
   const tempLink = document.createElement("a");
   tempLink.style.display = "none";
   tempLink.href = url;

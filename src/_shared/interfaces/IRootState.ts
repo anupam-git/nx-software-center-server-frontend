@@ -1,5 +1,7 @@
-import IHomeComponentState from "../../app/home/IHomeComponentState";
+import ICategoriesState from "../../app/categories/ICategoriesState";
+import IHomeState from "../../app/home/IHomeState";
 
 export default interface IRootState {
-  Home: IHomeComponentState;
+  Home: IHomeState;
+  Categories: ICategoriesState;
 }

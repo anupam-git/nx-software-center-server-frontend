@@ -1,8 +1,8 @@
 import * as ActionTypes from "../../_shared/ActionTypes";
 import { IActionPayload } from "../../_shared/interfaces/IActionPayload";
-import IHomeComponentState from "./IHomeComponentState";
+import IHomeState from "./IHomeState";
 
-const defaultState: IHomeComponentState = {
+const defaultState: IHomeState = {
   search: {
     text: "",
     category: ""

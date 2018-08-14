@@ -7,12 +7,12 @@ import { IActionPayload } from "../../_shared/interfaces/IActionPayload";
 import { IApp } from "../../_shared/interfaces/IApp";
 import IRootState from "../../_shared/interfaces/IRootState";
 import * as Actions from "./HomeAction";
-import IHomeComponentState from "./IHomeComponentState";
+import IHomeState from "./IHomeState";
 import SearchField from "./searchfield/SearchField";
 
 import "./Home.scss";
 
-interface IHomeComponentPropTypes extends React.Props<HomeComponent>, IHomeComponentState {
+interface IHomeComponentPropTypes extends React.Props<HomeComponent>, IHomeState {
   apps: IApp[];
   fetchAppsList: (search: {
     text: string,

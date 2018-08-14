@@ -5,13 +5,15 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunk from "redux-thunk";
 
 import App from "./app/App";
+import categoriesReducer from "./app/categories/CategoriesReducer";
 import homeReducer from "./app/home/HomeReducer";
 import registerServiceWorker from "./registerServiceWorker";
 
 import "./index.scss";
 
 const rootReducer = combineReducers({
-  Home: homeReducer
+  Home: homeReducer,
+  Categories: categoriesReducer
 });
 const store = createStore(
   rootReducer,
