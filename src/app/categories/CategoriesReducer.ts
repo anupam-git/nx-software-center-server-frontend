@@ -1,4 +1,4 @@
-import * as ActionTypes from "../../_shared/ActionTypes";
+import { ActionTypes } from "../../_shared/ActionTypes";
 import { IActionPayload } from "../../_shared/interfaces/IActionPayload";
 import ICategoriesState from "./ICategoriesState";
 
