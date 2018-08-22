@@ -2,7 +2,7 @@ import { Dispatch } from "react-redux";
 import { ActionTypes } from "../../_shared/ActionTypes";
 import { IActionPayload } from "../../_shared/interfaces/IActionPayload";
 import { IApp } from "../../_shared/interfaces/IApp";
-import { IThunkActionType } from "../../_shared/interfaces/IThunkActionType";
+import { IThunkResultType } from "../../_shared/interfaces/IThunkResultType";
 
 function updateAppsList(apps: IApp[] | {
   "Audio/Video": IApp[],
@@ -25,7 +25,7 @@ function updateAppsList(apps: IApp[] | {
   };
 }
 
-export function fetchAppsList(): IThunkActionType {
+export function fetchAppsList(): IThunkResultType {
   return (dispatch: Dispatch<IActionPayload>) => {
     fetch(
       `http://apps.nxos.org/api/applications/search?query=&category=&offset=&limit=`,

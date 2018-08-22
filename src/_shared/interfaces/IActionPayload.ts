@@ -1,7 +1,8 @@
+import { Action } from "redux";
 import { ActionTypes } from "../ActionTypes";
 import { IApp } from "./IApp";
 
-export interface IActionPayload {
+export interface IActionPayload extends Action<any> {
   type: ActionTypes;
   /** Payload to be sent to the reducer */
   data: {

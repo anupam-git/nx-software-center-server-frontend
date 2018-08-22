@@ -10,6 +10,8 @@ import * as Actions from "./HomeAction";
 import IHomeState from "./IHomeState";
 import SearchField from "./searchfield/SearchField";
 
+import { ThunkAction, ThunkDispatch } from "redux-thunk";
+import { IThunkResultType } from "../../_shared/interfaces/IThunkResultType";
 import "./Home.scss";
 
 interface IHomeComponentPropTypes extends React.Props<HomeComponent>, IHomeState {
@@ -61,7 +63,7 @@ class HomeComponent extends React.Component<IHomeComponentPropTypes, any> {
 function mapStateToProps(state: IRootState, ownProps: any) {
   return state.Home;
 }
-function mapDispatchToProps(dispatch: Dispatch<IActionPayload> | any, ownProps: any) {
+function mapDispatchToProps(dispatch: ThunkDispatch<IRootState, void, IActionPayload>, ownProps: any) {
   dispatch(Actions.fetchAppsList());
 
   return {

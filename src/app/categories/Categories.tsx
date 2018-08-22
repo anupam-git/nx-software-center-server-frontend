@@ -8,6 +8,7 @@ import IRootState from "../../_shared/interfaces/IRootState";
 import * as Actions from "./CategoriesAction";
 import ICategoriesState from "./ICategoriesState";
 
+import { ThunkDispatch } from "redux-thunk";
 import AppList from "../../_shared/components/applist/AppList";
 import "./Categories.scss";
 
@@ -132,7 +133,7 @@ export class CategoriesComponent extends React.Component<ICategoriesComponentPro
 function mapStateToProps(state: IRootState, ownProps: any) {
   return state.Categories;
 }
-function mapDispatchToProps(dispatch: Dispatch<IActionPayload> | any, ownProps: any) {
+function mapDispatchToProps(dispatch: ThunkDispatch<IRootState, void, IActionPayload>, ownProps: any) {
   dispatch(Actions.fetchAppsList());
 
   return {};

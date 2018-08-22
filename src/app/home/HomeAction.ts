@@ -2,7 +2,7 @@ import { Dispatch } from "react-redux";
 import { ActionTypes } from "../../_shared/ActionTypes";
 import { IActionPayload } from "../../_shared/interfaces/IActionPayload";
 import { IApp } from "../../_shared/interfaces/IApp";
-import { IThunkActionType } from "../../_shared/interfaces/IThunkActionType";
+import { IThunkResultType } from "../../_shared/interfaces/IThunkResultType";
 
 function updateAppsList(apps: IApp[]): IActionPayload {
   return {
@@ -14,7 +14,7 @@ function updateAppsList(apps: IApp[]): IActionPayload {
 export function fetchAppsList(search = {
   text: "",
   category: ""
-}): IThunkActionType {
+}): IThunkResultType {
   return (dispatch: Dispatch<IActionPayload>) => {
     fetch(
       `http://apps.nxos.org/api/applications/search?query=${search.text}&category=${search.category}&offset=&limit=`,
