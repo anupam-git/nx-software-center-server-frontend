@@ -30,7 +30,7 @@ export default class Sidenav extends React.Component<ISidenavPropTypes, ISidenav
       menuOptions: [
         { key: "home", icon: "home", text: "Home", active: true, href: routePaths.Home },
         { key: "categories", icon: "grid layout", text: "Categories", href: routePaths.Categories },
-        { key: "About", icon: "info circle", text: "About", href: "/about" }
+        { key: "About", icon: "info circle", text: "About", href: routePaths.About }
       ]
     };
   }
