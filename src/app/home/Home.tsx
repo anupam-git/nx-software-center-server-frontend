@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 
 import AppList from "../../_shared/components/applist/AppList";
 import { IActionPayload } from "../../_shared/interfaces/IActionPayload";
@@ -10,8 +10,6 @@ import * as Actions from "./HomeAction";
 import IHomeState from "./IHomeState";
 import SearchField from "./searchfield/SearchField";
 
-import { ThunkAction, ThunkDispatch } from "redux-thunk";
-import { IThunkResultType } from "../../_shared/interfaces/IThunkResultType";
 import "./Home.scss";
 
 interface IHomeComponentPropTypes extends React.Props<HomeComponent>, IHomeState {

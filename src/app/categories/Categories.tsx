@@ -1,5 +1,5 @@
 import * as React from "react";
-import { connect, Dispatch } from "react-redux";
+import { connect } from "react-redux";
 
 // import AppList from "../../_shared/components/applist/AppList";
 import { IActionPayload } from "../../_shared/interfaces/IActionPayload";
